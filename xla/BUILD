@@ -1196,3 +1196,45 @@ filegroup(
 #     deps = [":xla_proto"],
 # )
 # copybara:uncomment_end
+
+cc_library(
+    name = "myxla",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//xla:literal_util",
+        "//xla/client:client_library",
+        "//xla/client:local_client",
+        "//xla/pjrt:local_device_state",
+        "//xla/pjrt:mlir_to_hlo",
+        "//xla/pjrt:pjrt_stream_executor_client",
+        "//xla/service:cpu_plugin",
+        "//xla/service:platform_util",
+        "//xla/service/cpu:cpu_compiler",
+        #"//xla/tests:literal_test_util",
+        #"@com_google_googletest//:gtest_main",
+        "@com_google_protobuf//:protobuf",
+        "@llvm-project//mlir:FuncDialect",
+        "@llvm-project//mlir:IR",
+        "@llvm-project//mlir:Parser",
+        "@stablehlo//:register",
+
+        "//xla:xla_proto_cc_impl",
+        "//xla:xla_data_proto_cc_impl",
+        "//xla/service:hlo_proto_cc_impl",
+        "//xla/service:memory_space_assignment_proto_cc_impl",
+        "//xla/service/gpu:backend_configs_cc_impl",
+        "//xla/stream_executor:dnn_proto_cc_impl",
+        "//xla:autotuning_proto_cc_impl",
+
+        "@tsl//tsl/platform:env_impl",
+        "@tsl//tsl/platform:tensor_float_32_utils",
+        "@tsl//tsl/profiler/utils:time_utils_impl",
+        "@tsl//tsl/profiler/backends/cpu:annotation_stack_impl",
+        "@tsl//tsl/profiler/backends/cpu:traceme_recorder_impl",
+        "@tsl//tsl/protobuf:protos_all_cc_impl",
+        "@tsl//tsl/protobuf:dnn_proto_cc_impl",
+        "@tsl//tsl/framework:allocator",
+        "@tsl//tsl/framework:allocator_registry_impl",
+        "@tsl//tsl/util:determinism",
+    ],
+)
