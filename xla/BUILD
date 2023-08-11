@@ -1210,8 +1210,11 @@ cc_library(
         "//xla/service:cpu_plugin",
         "//xla/service:platform_util",
         "//xla/service/cpu:cpu_compiler",
-        #"//xla/tests:literal_test_util",
-        #"@com_google_googletest//:gtest_main",
+
+        "//xla/service:gpu_plugin_impl",
+        "//xla/service/gpu:hlo_op_profile_proto_cc_impl",
+        "//xla/stream_executor/cuda:cuda_platform",
+
         "@com_google_protobuf//:protobuf",
         "@llvm-project//mlir:FuncDialect",
         "@llvm-project//mlir:IR",
